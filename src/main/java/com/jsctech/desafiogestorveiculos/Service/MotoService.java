@@ -12,9 +12,9 @@ import java.util.Map;
 
 public class MotoService {
 
-    private static Map<Long, Moto> listaMotos = new HashMap<>();
+    public static Map<Long, Moto> listaMotos = new HashMap<>();
 
-    private ResponseEntity<Moto> buscarMotoId(Long id) {
+    public ResponseEntity<Moto> buscarMotoId(Long id) {
         Moto moto = listaMotos.get(id);
         if (moto == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
@@ -22,12 +22,12 @@ public class MotoService {
         return ResponseEntity.status(HttpStatus.OK).body(moto);
     }
 
-    private List<Moto> buscarTodasMotos() {
+    public List<Moto> buscarTodasMotos() {
 
         return new ArrayList<>(listaMotos.values());
     }
 
-    private ResponseEntity<Moto> CadastraMoto(Moto moto) {
+ public ResponseEntity<Moto> CadastraMoto(Moto moto) {
         Moto motoEncontrado = listaMotos.get(moto.getId());
         if (motoEncontrado == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
@@ -35,7 +35,7 @@ public class MotoService {
         return ResponseEntity.status(HttpStatus.OK).body(motoEncontrado);
     }
 
-    private ResponseEntity<Moto> AtualizaMotos(Moto moto) {
+    public ResponseEntity<Moto> AtualizaMotos(Moto moto) {
      Moto motoEncontrado = listaMotos.get(moto.getId());
         if (motoEncontrado == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
@@ -44,7 +44,7 @@ public class MotoService {
         return ResponseEntity.status(HttpStatus.OK).body(motoEncontrado);
     }
 
-    private ResponseEntity<String> CadastraMoto(Long id) {
+   public ResponseEntity<String> CadastraMoto(Long id) {
        Moto motoEncontrado = listaMotos.get(id);
         if (motoEncontrado == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);

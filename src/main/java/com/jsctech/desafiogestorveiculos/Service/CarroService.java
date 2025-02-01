@@ -12,9 +12,9 @@ import java.util.Map;
 
 public class CarroService {
 
-    private static Map<Long, Carro> listaCarros = new HashMap<>();
+ public static Map<Long, Carro> listaCarros = new HashMap<>();
 
-    private ResponseEntity<Carro> buscarCarroId(Long id) {
+   public ResponseEntity<Carro> buscarCarroId(Long id) {
         Carro carro = listaCarros.get(id);
         if (carro == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
@@ -22,12 +22,12 @@ public class CarroService {
         return ResponseEntity.status(HttpStatus.OK).body(carro);
     }
 
-    private List<Carro> buscarTodosCarros() {
+    public List<Carro> buscarTodosCarros() {
 
         return new ArrayList<>(listaCarros.values());
     }
 
-    private ResponseEntity<Carro> CadastraCarro(Carro carro) {
+  public ResponseEntity<Carro> CadastraCarro(Carro carro) {
         Carro carroEncontrado = listaCarros.get(carro.getId());
         if (carroEncontrado == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
@@ -35,7 +35,7 @@ public class CarroService {
         return ResponseEntity.status(HttpStatus.OK).body(carroEncontrado);
     }
 
-    private ResponseEntity<Carro> AtualizaCarro(Carro carro) {
+public ResponseEntity<Carro> AtualizaCarro(Carro carro) {
         Carro carroEncontrado = listaCarros.get(carro.getId());
         if (carroEncontrado == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
@@ -44,7 +44,7 @@ public class CarroService {
         return ResponseEntity.status(HttpStatus.OK).body(carroEncontrado);
     }
 
-    private ResponseEntity<String> CadastraCarro(Long id) {
+   public ResponseEntity<String> CadastraCarro(Long id) {
         Carro carroEncontrado = listaCarros.get(id);
         if (carroEncontrado == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);

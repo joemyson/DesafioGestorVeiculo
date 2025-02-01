@@ -4,12 +4,14 @@ import com.jsctech.desafiogestorveiculos.Entity.Carro;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Service
 public class CarroService {
 
  public static Map<Long, Carro> listaCarros = new HashMap<>();
@@ -44,7 +46,7 @@ public ResponseEntity<Carro> AtualizaCarro(Carro carro) {
         return ResponseEntity.status(HttpStatus.OK).body(carroEncontrado);
     }
 
-   public ResponseEntity<String> CadastraCarro(Long id) {
+   public ResponseEntity<String> removeCarro(Long id) {
         Carro carroEncontrado = listaCarros.get(id);
         if (carroEncontrado == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
